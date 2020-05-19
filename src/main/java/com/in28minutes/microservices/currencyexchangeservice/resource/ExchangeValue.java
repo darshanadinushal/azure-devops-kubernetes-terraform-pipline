@@ -25,7 +25,7 @@ public class ExchangeValue {
 	public ExchangeValue() {
 
 	}
-
+    //Add a comment to ExchangeValue constuctor 
 	public ExchangeValue(Long id, String from, String to, BigDecimal conversionMultiple) {
 		super();
 		this.id = id;
