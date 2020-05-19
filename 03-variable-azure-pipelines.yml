@@ -1,0 +1,20 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages: 
+- stage: Build
+  jobs:
+  - job: FirstJob
+    steps: 
+    - bash: echo Build FristJob
+    - bash: echo 
+  - job: SecoundJob
+    steps: 
+    - bash: echo Build SecoundJob 
+
+
+
+
