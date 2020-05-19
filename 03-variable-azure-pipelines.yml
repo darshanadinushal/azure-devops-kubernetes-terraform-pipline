@@ -10,10 +10,13 @@ stages:
   - job: FirstJob
     steps: 
     - bash: echo Build FristJob
-    - bash: echo 
-  - job: SecoundJob
-    steps: 
-    - bash: echo Build SecoundJob 
+    - bash: echo $(Build.BuildNumber)        # gives build number 
+    - bash: echo $(Build.BuildNumber)        # gives build Id
+    - bash: echo $(Build.Repository.Name)    #The name of the triggering repository
+    - bash: echo $(Build.SourceBranch)       #The branch of the triggering repo the build was queued
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
 
 
 
