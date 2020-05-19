@@ -10,23 +10,28 @@ stages:
   - job: FirstJob
     steps: 
     - bash: echo Build FristJob
+    - bash: echo $(Pipeline_level_Variable)
   - job: SecoundJob
     steps: 
     - bash: echo Build SecoundJob 
 
 - stage: DevDeploy
+  variables:
+    evironment_Dev: Dev
   dependsOn: Build
   jobs:
   - job: DevDeploy
     steps: 
-    - bash: echo Build DevDeploy
+    - bash: echo $(evironment_Dev) DevDeploy
 
 - stage: QADeploy
+  variables:
+    evironment_QA: QA
   dependsOn: Build
   jobs:
   - job: QADeploy
     steps: 
-    - bash: echo Build QADeploy
+    - bash: echo $(evironment_QA) QADeploy
 
 - stage: ProdDeploy
   dependsOn: 
