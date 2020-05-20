@@ -17,6 +17,19 @@ stages:
     - bash: echo $(Build.ArtifactStagingDirectory)
     - bash: echo $(System.DefaultWorkingDirectory)
     - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: java --version
+    - bash: node --version
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: |
+          **/*.ymal
+          **/*.tf
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
 
 
 
