@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: currency-exchange
-        image: in28min/currency-exchange:0.0.1-RELEASE
+        image: darshanadinushal/azure_docker-currency-exchange
         imagePullPolicy: IfNotPresent
         ports:
         - name: liveness-port
