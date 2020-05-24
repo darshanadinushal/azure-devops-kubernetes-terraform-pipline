@@ -54,14 +54,12 @@ stages:
       vmImage: 'ubuntu-latest'
     steps: 
 #Download the k8s Files
-    - task: DownloadBuildArtifacts@0
+    - task: DownloadPipelineArtifact@2
       inputs:
         buildType: 'current'
-        downloadType: 'single'
         artifactName: 'manifests'
         itemPattern: '**/*.yaml'
-        downloadPath: '$(System.ArtifactsDirectory)'
-
+        targetPath: '$(System.ArtifactsDirectory)'
 #Deploy to k8s Cluster with Docker Image
     - task: KubernetesManifest@0
       inputs:
