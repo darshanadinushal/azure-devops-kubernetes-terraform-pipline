@@ -5,8 +5,7 @@ resources:
 - repo: self
 
 variables:
-  tag: 22 
-#'$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
 
 #Stage 1 
 #Build Docker Image 
@@ -20,14 +19,14 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    #- task: Docker@2
-    #  displayName: Build an image
-    #  inputs:
-    #    containerRegistry: 'docker-hub-connection'
-    #    repository: 'darshanadinushal/azure_docker-currency-exchange'
-    #    command: 'buildAndPush'
-    #    Dockerfile: '**/Dockerfile'
-    #    tags: '$(tag)'
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        containerRegistry: 'docker-hub-connection'
+        repository: 'darshanadinushal/azure_docker-currency-exchange'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
 
 #Copy to the Build.ArtifactStagingDirectory
     - task: CopyFiles@2
