@@ -7,7 +7,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "mybucket" # Will be overridden from build
+    bucket = "mybucket" # Will be overridden from build , give this as a parametter in pipeline
     key    = "path/to/my/key" # Will be overridden from build
     region = "us-east-1"
   }
@@ -29,9 +29,9 @@ provider "kubernetes" {
   version                = "~> 1.9"
 }
 
-module "in28minutes-cluster" {
+module "darshanabackendportal-cluster" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "in28minutes-cluster"
+  cluster_name    = "darshanabackendportal-cluster"
   cluster_version = "1.14"
   subnets         = ["subnet-329b5a6d", "subnet-3a2e2604"] 
   #subnets = data.aws_subnet_ids.subnets.ids
@@ -50,11 +50,11 @@ module "in28minutes-cluster" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.darshanabackendportal-cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.darshanabackendportal-cluster.cluster_id
 }
 
 
